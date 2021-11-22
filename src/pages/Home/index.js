@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { MdFlightTakeoff } from 'react-icons/md'
 import api from '../../services/api';
 
-import { addReserve } from '../../store/modules/reserve/actions';
+import { addReserveRequest } from '../../store/modules/reserve/actions';
 
 
 import './style.css';
@@ -22,8 +22,8 @@ export default function Home() {
     setTrips(response.data)
   }
 
-  function handleAdd(trip) {
-    dispatch(addReserve(trip))
+  function handleAdd(id) {
+    dispatch(addReserveRequest(id))
   }
 
 
@@ -37,7 +37,7 @@ export default function Home() {
               <strong>{trip.image}</strong>
               <span>Status: {trip.status ? 'Disponível' : 'Indisponível'}</span>
 
-              <button type="button" onClick={() => handleAdd(trip)}>
+              <button type="button" onClick={() => handleAdd(trip.id)}>
                 <div>
                   <MdFlightTakeoff size={16} color='#FFF' />
                 </div>
